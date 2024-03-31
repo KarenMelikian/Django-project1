@@ -1,12 +1,13 @@
 from django.http import HttpRequest, HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, get_list_or_404
 
-
+from goods.models import Products, Categories
 
 def index(request: HttpRequest) -> HttpResponse:
     context = {
         'title': 'RegalRidge - Main',
         'content': 'RegalRidge Furniture Store',
+        'categories': Categories.objects.all()
     }
 
     return render(request, 'main/index.html', context)
