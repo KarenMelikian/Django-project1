@@ -1,15 +1,17 @@
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render
 
-from django.views.generic import ListView
-from .models import ProductsKitchen
+from django.views.generic import ListView, DetailView
+from .models import Products
 
 
-class CategoryKitchenView(ListView):
+class ProductListView(ListView):
     template_name = 'goods/category.html'
-    model = ProductsKitchen
-    context_object_name = 'kitchen'
+    model = Products
+    context_object_name = 'goods'
 
 
-def product(request: HttpRequest) -> HttpResponse:
-    return render(request, 'goods/product.html')
+class ProductDetailsView(DetailView):
+    template_name = 'goods/product.html'
+    model = Products
+    context_object_name = 'product'
