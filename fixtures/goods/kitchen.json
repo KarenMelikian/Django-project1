@@ -1,0 +1,170 @@
+[
+{
+    "model": "goods.products_kitchen",
+    "pk": 1,
+    "fields": {
+        "name": "Kitchen Island",
+        "slug": null,
+        "description": "Description: A versatile piece of furniture offering additional countertop space and storage underneath.",
+        "image": "goods_images/kitchen_island.jpg",
+        "price": "599.99",
+        "discount": 10,
+        "quantity": 5,
+        "category": 1
+    }
+},
+{
+    "model": "goods.products_kitchen",
+    "pk": 2,
+    "fields": {
+        "name": "Dining Table Set",
+        "slug": null,
+        "description": "A complete dining set including table and chairs, perfect for family meals and gatherings.",
+        "image": "goods_images/dining_table_set.jpg",
+        "price": "899.99",
+        "discount": 15,
+        "quantity": 7,
+        "category": 1
+    }
+},
+{
+    "model": "goods.products_kitchen",
+    "pk": 3,
+    "fields": {
+        "name": "Pantry Cabinet",
+        "slug": null,
+        "description": "Tall cabinet with shelves or drawers for storing food items, cookware, and other kitchen essentials.",
+        "image": "goods_images/pantry_cabinet.jpg",
+        "price": "349.99",
+        "discount": 5,
+        "quantity": 30,
+        "category": 1
+    }
+},
+{
+    "model": "goods.products_kitchen",
+    "pk": 4,
+    "fields": {
+        "name": "Kitchen Cart",
+        "slug": null,
+        "description": "Mobile cart with wheels, providing extra storage and workspace that can be moved around the kitchen.",
+        "image": "goods_images/kitchen_cart.jpg",
+        "price": "149.99",
+        "discount": 8,
+        "quantity": 12,
+        "category": 1
+    }
+},
+{
+    "model": "goods.products_kitchen",
+    "pk": 5,
+    "fields": {
+        "name": "Wine Rack",
+        "slug": null,
+        "description": "A stylish storage solution for wine bottles, often featuring racks or shelves for organization.",
+        "image": "",
+        "price": "79.99",
+        "discount": 12,
+        "quantity": 25,
+        "category": 1
+    }
+},
+{
+    "model": "goods.products_kitchen",
+    "pk": 6,
+    "fields": {
+        "name": "Kitchen Hutch",
+        "slug": null,
+        "description": "A combination of shelves, drawers, and cabinets, typically placed against a wall for storing dishes, glassware, and decor.",
+        "image": "goods_images/kitchen_hutch.jpg",
+        "price": "449.99",
+        "discount": 10,
+        "quantity": 12,
+        "category": 1
+    }
+},
+{
+    "model": "goods.products_kitchen",
+    "pk": 7,
+    "fields": {
+        "name": "Bar Stools",
+        "slug": null,
+        "description": "Tall stools designed for seating at a kitchen counter or bar, available in various styles and materials.",
+        "image": "goods_images/bar_stools.jpg",
+        "price": "39.99",
+        "discount": 10,
+        "quantity": 45,
+        "category": 1
+    }
+},
+{
+    "model": "goods.products_kitchen",
+    "pk": 8,
+    "fields": {
+        "name": "Kitchen Bench",
+        "slug": null,
+        "description": "A seating option often placed against a wall or island, providing flexible seating for dining or casual gatherings.",
+        "image": "goods_images/kitchen_bench.jpg",
+        "price": "129.99",
+        "discount": 10,
+        "quantity": 8,
+        "category": 1
+    }
+},
+{
+    "model": "goods.products_kitchen",
+    "pk": 9,
+    "fields": {
+        "name": "Kitchen Buffet",
+        "slug": null,
+        "description": "Low, long storage piece with cabinets and drawers, ideal for storing dishes, linens, and servingware.",
+        "image": "goods_images/kitchen_buffet.jpg",
+        "price": "549.99",
+        "discount": 15,
+        "quantity": 5,
+        "category": 1
+    }
+},
+{
+    "model": "goods.products_kitchen",
+    "pk": 10,
+    "fields": {
+        "name": "Butcher Block",
+        "slug": null,
+        "description": "A sturdy wooden block used for chopping and food preparation, often integrated into kitchen countertops.",
+        "image": "goods_images/butcher_block.jpg",
+        "price": "19.99",
+        "discount": 7,
+        "quantity": 85,
+        "category": 1
+    }
+},
+{
+    "model": "goods.products_kitchen",
+    "pk": 11,
+    "fields": {
+        "name": "Kitchen Trolley",
+        "slug": null,
+        "description": "A small, portable cart with shelves or baskets, offering extra storage and mobility for various kitchen tasks.",
+        "image": "goods_images/kitchen_trolley.jpg",
+        "price": "79.99",
+        "discount": 9,
+        "quantity": 14,
+        "category": 1
+    }
+},
+{
+    "model": "goods.products_kitchen",
+    "pk": 12,
+    "fields": {
+        "name": "Corner Shelf Unit",
+        "slug": null,
+        "description": "A space-saving shelving unit designed to fit neatly into corners, providing additional storage for kitchen items.",
+        "image": "goods_images/corner_shelf_unit.jpg",
+        "price": "99.99",
+        "discount": 8,
+        "quantity": 8,
+        "category": 1
+    }
+}
+]

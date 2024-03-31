@@ -12,6 +12,7 @@ class Categories(models.Model):
     class Meta:
         db_table = 'category'
 
+
 class Products_kitchen(models.Model):
     name = models.CharField(max_length=80, unique=True)
     slug = models.SlugField(max_length=150, unique=True, blank=True, null=True)
