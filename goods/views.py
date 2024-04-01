@@ -5,23 +5,12 @@ from django.views.generic import ListView, DetailView
 from .models import Products, Categories
 
 
-# def category_list(request, category_slug):
-#     if category_slug == 'all':
-#         goods = Products.objects.all()
-#     else:
-#         goods = get_list_or_404(Products.objects.filter(category__slug=category_slug))
-#
-#     context = {
-#         'goods': goods
-#     }
-#
-#     return render(request, 'goods/category.html', context)
-
 
 class CategoryListView(ListView):
     model = Products
     template_name = 'goods/category.html'
     context_object_name = 'goods'
+    paginate_by = 3
 
     def get_queryset(self):
         category_slug = self.kwargs.get('category_slug')
