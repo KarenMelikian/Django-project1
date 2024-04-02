@@ -3,7 +3,7 @@ from django.shortcuts import render, get_list_or_404
 
 from django.views.generic import ListView, DetailView
 from .models import Products, Categories
-
+from .utils import q_search
 
 
 class CategoryListView(ListView):
@@ -13,14 +13,18 @@ class CategoryListView(ListView):
     paginate_by = 3
 
     def get_queryset(self):
-        category_slug = self.kwargs.get('category_slug')
         on_sale = self.request.GET.get('on_sale', None)
         order_by = self.request.GET.get('order_by', None)
+        query = self.request.GET.get('q', None)
+        category_slug = self.kwargs.get('category_slug')
 
         queryset = super().get_queryset()
 
         if category_slug != 'all':
             queryset = queryset.filter(category__slug=category_slug)
+
+        if query:
+            queryset = q_search(query)
 
         if on_sale:
             queryset = queryset.filter(discount__gt=0)

@@ -4,7 +4,7 @@
     "pk": 1,
     "fields": {
         "name": "Kitchen",
-        "slug": null
+        "slug": "kitchen"
     }
 },
 {
@@ -12,7 +12,7 @@
     "pk": 2,
     "fields": {
         "name": "Bedroom",
-        "slug": null
+        "slug": "bedroom"
     }
 },
 {
@@ -20,7 +20,7 @@
     "pk": 3,
     "fields": {
         "name": "Living room",
-        "slug": null
+        "slug": "livingroom"
     }
 },
 {
@@ -28,7 +28,7 @@
     "pk": 4,
     "fields": {
         "name": "Office",
-        "slug": null
+        "slug": "office"
     }
 },
 {
@@ -36,7 +36,7 @@
     "pk": 5,
     "fields": {
         "name": "Accessoires",
-        "slug": null
+        "slug": "accessoires"
     }
 },
 {
@@ -44,7 +44,15 @@
     "pk": 6,
     "fields": {
         "name": "Decor",
-        "slug": null
+        "slug": "decor"
+    }
+},
+{
+    "model": "goods.categories",
+    "pk": 7,
+    "fields": {
+        "name": "All goods",
+        "slug": "all"
     }
 }
 ]

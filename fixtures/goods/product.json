@@ -1,6 +1,6 @@
 [
 {
-    "model": "goods.products_kitchen",
+    "model": "goods.products",
     "pk": 1,
     "fields": {
         "name": "Kitchen Island",
@@ -14,7 +14,7 @@
     }
 },
 {
-    "model": "goods.products_kitchen",
+    "model": "goods.products",
     "pk": 2,
     "fields": {
         "name": "Dining Table Set",
@@ -28,7 +28,7 @@
     }
 },
 {
-    "model": "goods.products_kitchen",
+    "model": "goods.products",
     "pk": 3,
     "fields": {
         "name": "Pantry Cabinet",
@@ -42,7 +42,7 @@
     }
 },
 {
-    "model": "goods.products_kitchen",
+    "model": "goods.products",
     "pk": 4,
     "fields": {
         "name": "Kitchen Cart",
@@ -56,13 +56,13 @@
     }
 },
 {
-    "model": "goods.products_kitchen",
+    "model": "goods.products",
     "pk": 5,
     "fields": {
         "name": "Wine Rack",
         "slug": null,
         "description": "A stylish storage solution for wine bottles, often featuring racks or shelves for organization.",
-        "image": "",
+        "image": "goods_images/wine_rack.jpg",
         "price": "79.99",
         "discount": 12,
         "quantity": 25,
@@ -70,7 +70,7 @@
     }
 },
 {
-    "model": "goods.products_kitchen",
+    "model": "goods.products",
     "pk": 6,
     "fields": {
         "name": "Kitchen Hutch",
@@ -84,7 +84,7 @@
     }
 },
 {
-    "model": "goods.products_kitchen",
+    "model": "goods.products",
     "pk": 7,
     "fields": {
         "name": "Bar Stools",
@@ -98,7 +98,7 @@
     }
 },
 {
-    "model": "goods.products_kitchen",
+    "model": "goods.products",
     "pk": 8,
     "fields": {
         "name": "Kitchen Bench",
@@ -112,7 +112,7 @@
     }
 },
 {
-    "model": "goods.products_kitchen",
+    "model": "goods.products",
     "pk": 9,
     "fields": {
         "name": "Kitchen Buffet",
@@ -126,7 +126,7 @@
     }
 },
 {
-    "model": "goods.products_kitchen",
+    "model": "goods.products",
     "pk": 10,
     "fields": {
         "name": "Butcher Block",
@@ -140,7 +140,7 @@
     }
 },
 {
-    "model": "goods.products_kitchen",
+    "model": "goods.products",
     "pk": 11,
     "fields": {
         "name": "Kitchen Trolley",
@@ -154,7 +154,7 @@
     }
 },
 {
-    "model": "goods.products_kitchen",
+    "model": "goods.products",
     "pk": 12,
     "fields": {
         "name": "Corner Shelf Unit",
@@ -165,6 +165,146 @@
         "discount": 8,
         "quantity": 8,
         "category": 1
+    }
+},
+{
+    "model": "goods.products",
+    "pk": 13,
+    "fields": {
+        "name": "Bed Frame",
+        "slug": "bed_frame",
+        "description": "Sturdy frame to support a mattress and provide a comfortable sleeping surface.",
+        "image": "goods_images/bed_frame.jpg",
+        "price": "499.99",
+        "discount": 10,
+        "quantity": 20,
+        "category": 2
+    }
+},
+{
+    "model": "goods.products",
+    "pk": 14,
+    "fields": {
+        "name": "Dresser",
+        "slug": "dresser",
+        "description": "Chest of drawers for storing clothes, linens, and personal items.",
+        "image": "goods_images/dresser.png",
+        "price": "349.99",
+        "discount": 5,
+        "quantity": 12,
+        "category": 2
+    }
+},
+{
+    "model": "goods.products",
+    "pk": 15,
+    "fields": {
+        "name": "Nightstand",
+        "slug": "nightstand",
+        "description": "Small table or cabinet placed beside a bed for holding bedside essentials.",
+        "image": "goods_images/nightstand.jpg",
+        "price": "99.99",
+        "discount": 8,
+        "quantity": 25,
+        "category": 2
+    }
+},
+{
+    "model": "goods.products",
+    "pk": 16,
+    "fields": {
+        "name": "Wardrobe",
+        "slug": "wardrobe",
+        "description": "Large closet-like furniture for hanging and storing clothes and accessories.",
+        "image": "goods_images/wardrobe.jpg",
+        "price": "799.99",
+        "discount": 19,
+        "quantity": 8,
+        "category": 2
+    }
+},
+{
+    "model": "goods.products",
+    "pk": 17,
+    "fields": {
+        "name": "Mattress",
+        "slug": "mattress",
+        "description": "Comfortable mattress for a good night's sleep, available in various sizes and firmness levels.",
+        "image": "goods_images/mattress.png",
+        "price": "89.99",
+        "discount": 25,
+        "quantity": 26,
+        "category": 2
+    }
+},
+{
+    "model": "goods.products",
+    "pk": 18,
+    "fields": {
+        "name": "Sofa Set",
+        "slug": "sofa_set",
+        "description": "Set of sofas or couches for comfortable seating in the living room.",
+        "image": "goods_images/sofa_set.png",
+        "price": "1299.99",
+        "discount": 5,
+        "quantity": 8,
+        "category": 3
+    }
+},
+{
+    "model": "goods.products",
+    "pk": 19,
+    "fields": {
+        "name": "Coffee Table",
+        "slug": "coffee_table",
+        "description": "Low table placed in front of a sofa for holding drinks, books, and decor.",
+        "image": "goods_images/coffee_table.jpg",
+        "price": "249.99",
+        "discount": 12,
+        "quantity": 17,
+        "category": 3
+    }
+},
+{
+    "model": "goods.products",
+    "pk": 20,
+    "fields": {
+        "name": "TV Stand",
+        "slug": "tv_stand",
+        "description": "Furniture piece designed to hold a television and related media equipment.",
+        "image": "goods_images/tv_stand.png",
+        "price": "199.99",
+        "discount": 10,
+        "quantity": 20,
+        "category": 3
+    }
+},
+{
+    "model": "goods.products",
+    "pk": 21,
+    "fields": {
+        "name": "Accent Chair",
+        "slug": "accent_chair",
+        "description": "Stylish chair designed to add visual interest and extra seating to a living room.",
+        "image": "goods_images/accent_chair.png",
+        "price": "199.99",
+        "discount": 8,
+        "quantity": 25,
+        "category": 3
+    }
+},
+{
+    "model": "goods.products",
+    "pk": 22,
+    "fields": {
+        "name": "Side Table",
+        "slug": "side_table",
+        "description": "Small table placed beside seating for holding lamps, drinks, or decor.",
+        "image": "goods_images/side_table.png",
+        "price": "79.99",
+        "discount": 6,
+        "quantity": 35,
+        "category": 3
     }
 }
 ]
