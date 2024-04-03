@@ -1,4 +1,3 @@
-from django.db.models import Q
 from django.contrib.postgres.search import (SearchVector,
                                             SearchRank,
                                             SearchQuery,
@@ -27,7 +26,7 @@ def q_search(query):
         headline=SearchHeadline(
             'name',
             query,
-            start_sel='<span style="background-color: yellow;">',
+            start_sel='<span style="background-color: pink;">',
             stop_sel='</span>',
         )
     )
@@ -36,7 +35,7 @@ def q_search(query):
         bodyline=SearchHeadline(
             'description',
             query,
-            start_sel='<span style="background-color: yellow;">',
+            start_sel='<span style="background-color: pink;">',
             stop_sel='</span>'
         )
     )
