@@ -1,11 +1,13 @@
 from django.shortcuts import render
-from django.views.generic import View, CreateView, ListView
+from django.urls import reverse_lazy
+from django.views.generic import View, CreateView, ListView, FormView
 
+from .forms import UserLoginForm
 
-class LoginView(View):
-    def get(self, request):
-        return render(request, 'users/login.html')
-
+class LoginView(FormView):
+    template_name = 'users/login.html'
+    form_class = UserLoginForm
+    success_url = reverse_lazy('main:index')
 
 
 def registration(request):
