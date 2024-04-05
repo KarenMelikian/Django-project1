@@ -1,8 +1,10 @@
-from django.shortcuts import render
-from django.urls import reverse_lazy
-from django.views.generic import View, CreateView, ListView, FormView
+from django.contrib.auth import logout
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, redirect
+from django.urls import reverse_lazy, reverse
+from django.views.generic import View, CreateView, ListView, FormView, TemplateView, DetailView
 
-from .forms import UserLoginForm
+from .forms import UserLoginForm, UserRegistrationForm
 
 class LoginView(FormView):
     template_name = 'users/login.html'
@@ -10,22 +12,25 @@ class LoginView(FormView):
     success_url = reverse_lazy('main:index')
 
 
-def registration(request):
-    context = {
-        'title': 'RegalRidge - Registration'
-    }
+class RegistrationView(FormView):
+    template_name = 'users/registration.html'
+    form_class = UserRegistrationForm
+    success_url = reverse_lazy('users:login')
 
-    return render(request, 'users/registration.html', context)
+    def form_valid(self, form):
+        form.save()
+        return super().form_valid(form)
 
-# class RegistrationView(CreateView):
-#     template_name = 'users/registration.html'
-#
-#     def get_queryset(self):
-#         pass
-
-
-class ProfileView(ListView):
+class ProfileView(TemplateView):
     template_name = 'users/profile.html'
 
-    def get_queryset(self):
-        pass
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['user'] = self.request.user
+        return context
+
+
+
+def logout_user(request):
+    logout(request)
+    return redirect(reverse_lazy('main:index'))

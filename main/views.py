@@ -1,13 +1,18 @@
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from django.http import HttpRequest, HttpResponse
-from django.shortcuts import render, get_list_or_404
+from django.shortcuts import render
 
 from goods.models import Products, Categories
+
+
 
 def index(request: HttpRequest) -> HttpResponse:
     context = {
         'title': 'RegalRidge - Main',
         'content': 'RegalRidge Furniture Store',
-        'categories': Categories.objects.all()
+        'categories': Categories.objects.all(),
+        'user': User
     }
 
     return render(request, 'main/index.html', context)
