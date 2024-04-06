@@ -40,9 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.postgres',
 
-    'main',
-    'goods',
-    'users',
+    'main.apps.MainConfig',
+    'goods.apps.GoodsConfig',
+    'users.apps.UsersConfig',
 
 ]
 
@@ -151,4 +151,6 @@ INTERNAL_IPS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'users.User'
+LOGIN_REDIRECT_URL = '/user/profile/'
+LOGOUT_REDIRECT_URL = '/user/login/'
 LOGIN_URL = '/user/login/'

@@ -48,7 +48,7 @@
                             <a class="nav-link  text-white" href="carts/cart.html">Basket</a>
                         </li>
 
-                        {% if user.is_authenticated %}
+                        {% if request.user.is_authenticated %}
                             <li class="nav-item dropdown ">
                                 <a class="nav-link dropdown-toggle text-white" href="#" role="button"
                                     data-bs-toggle="dropdown" aria-expanded="false">
@@ -58,7 +58,7 @@
                                     <li><a class="dropdown-item  text-white" href="carts/cart.html">Basket</a></li>
                                     <li><a class="dropdown-item  text-white" href="{% url 'users:profile' %}">Personal area</a>
                                     </li>
-                                    {% if user.is_admin or user.is_staff %}
+                                    {% if request.user.is_admin or request.user.is_staff %}
                                         <li><a class="dropdown-item  text-white" href="{% url 'admin:index' %}">Admin panel</a></li>
                                     {% endif %}
                                     <li>
@@ -183,6 +183,7 @@
                 </div>
                 <div class="col-lg-10">
                     <!-- Контент на странице -->
+                    {% include "includes/notifications.html" %}
                     {% block content %}
                     {% endblock %}
                 </div>
