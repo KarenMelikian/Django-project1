@@ -1,10 +1,10 @@
 from django.contrib import messages
-from django.contrib.auth import logout, authenticate, login
+from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.views import LogoutView, LoginView
-from django.shortcuts import render, redirect
+from django.contrib.auth.views import LoginView
+from django.shortcuts import redirect, render
 from django.urls import reverse_lazy, reverse
-from django.views.generic import TemplateView, FormView
+from django.views.generic import FormView
 
 from .forms import UserLoginForm, UserRegistrationForm, UserProfileForm
 
@@ -46,6 +46,9 @@ class UserProfileView(FormView):
         kwargs['instance'] = self.request.user
         return kwargs
 
+
+def user_cart(request):
+    return render(request, 'users/user-cart.html')
 
 def user_logout(request):
     logout(request)
