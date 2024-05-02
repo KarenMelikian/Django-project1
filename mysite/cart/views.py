@@ -29,5 +29,7 @@ class CartChangeView(UpdateView):
     template_name = 'cart/cart-change.html'
 
 
-class CartRemoveView(DeleteView):
-    template_name = 'cart/cart-remove.html'
+def cart_remove(request, cart_id):
+    cart = Cart.objects.get(id=cart_id)
+    cart.delete()
+    return redirect(request.META['HTTP_REFERER'])
