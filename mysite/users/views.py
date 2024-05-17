@@ -7,6 +7,7 @@ from django.urls import reverse_lazy, reverse
 from django.views.generic import FormView
 
 from .forms import UserLoginForm, UserRegistrationForm, UserProfileForm
+from cart.models import Cart
 
 class UserLoginView(LoginView):
     template_name = 'users/login.html'
@@ -41,6 +42,11 @@ class UserProfileView(FormView):
         form.save()
         return super().form_valid(form)
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['carts'] = Cart.objects.all()
+        return context
+
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
         kwargs['instance'] = self.request.user
@@ -48,7 +54,8 @@ class UserProfileView(FormView):
 
 
 def user_cart(request):
-    return render(request, 'users/user-cart.html')
+    cart = Cart.objects.all()
+    return render(request, 'users/user-cart.html', {'carts': cart})
 
 def user_logout(request):
     logout(request)

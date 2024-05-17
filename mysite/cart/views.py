@@ -8,8 +8,8 @@ from .models import Cart
 
 
 class CartAddView(View):
-    def get(self, request, product_slug):
-        product = Products.objects.get(slug=product_slug)
+    def get(self, request, product_id):
+        product = Products.objects.get(id=product_id)
 
         if request.user.is_authenticated:
             carts = Cart.objects.filter(user=request.user, product=product)
