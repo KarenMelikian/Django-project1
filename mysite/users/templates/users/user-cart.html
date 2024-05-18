@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load carts_tags %}
 
 {% block content %}
 <div class="row">
@@ -12,6 +13,7 @@
                     {% include 'cart/includes/include-cart.html' %}
                     <!-- Закончилась разметка корзины -->
                 </div>
+                {% user_carts request as carts %}
                 {% if carts %}
                     <a class="btn btn-dark" href="orders/create_order.html">
                         Оформить заказ

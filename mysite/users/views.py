@@ -1,6 +1,7 @@
 from django.contrib import messages
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy, reverse
@@ -33,7 +34,7 @@ class UserRegistrationView(FormView):
 
 
 
-class UserProfileView(FormView):
+class UserProfileView(FormView, LoginRequiredMixin):
     template_name = 'users/profile.html'
     form_class = UserProfileForm
     success_url = '/user/profile/'
@@ -42,11 +43,6 @@ class UserProfileView(FormView):
         form.save()
         return super().form_valid(form)
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['carts'] = Cart.objects.all()
-        return context
-
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
         kwargs['instance'] = self.request.user
@@ -54,10 +50,9 @@ class UserProfileView(FormView):
 
 
 def user_cart(request):
-    cart = Cart.objects.all()
-    return render(request, 'users/user-cart.html', {'carts': cart})
+    return render(request, 'users/user-cart.html')
 
 def user_logout(request):
     logout(request)
-    messages.success(request, f'{request.user.username} you are logged out of your account.')
+    messages.success(request, f'{request.user.username} You are logged out of your account.')
     return redirect(reverse('main:index'))

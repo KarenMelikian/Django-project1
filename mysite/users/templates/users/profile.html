@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load carts_tags %}
 
 {% block content %}
     <div class="row">
@@ -14,7 +15,6 @@
                             {% csrf_token %}
                             <div class="row">
                                 <div class="col-md-12 mb-3 text-center">
-
                                     {% if user.image %}
                                         <img src="{{ user.image.url }}"
                                          alt="Аватар пользователя" class="img-fluid rounded-circle"
@@ -86,6 +86,7 @@
                             {% include 'cart/includes/include-cart.html' %}
                             <!-- Закончилась разметка корзины -->
                         </div>
+                        {% user_carts request as carts %}
                         {% if carts %}
                             <a class="btn btn-dark" href="orders/create_order.html">
                                 Оформить заказ
