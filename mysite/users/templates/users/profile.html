@@ -88,7 +88,7 @@
                         </div>
                         {% user_carts request as carts %}
                         {% if carts %}
-                            <a class="btn btn-dark" href="orders/create_order.html">
+                            <a class="btn btn-dark" href="{% url 'order:create_order' %}">
                                 Оформить заказ
                             </a>
                         {% endif %}
