@@ -1,14 +1,18 @@
 from django.contrib import messages
-from django.contrib.auth import logout
+from django.contrib.auth import logout, get_user_model
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView
+from django.db.models import Prefetch
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy, reverse
+from django.utils.decorators import method_decorator
 from django.views.generic import FormView
 
 from .forms import UserLoginForm, UserRegistrationForm, UserProfileForm
 from cart.models import Cart
+from order.models import Order, OrderItem
+
 
 class UserLoginView(LoginView):
     template_name = 'users/login.html'
@@ -18,7 +22,6 @@ class UserLoginView(LoginView):
         username = form.cleaned_data.get('username')
         messages.success(self.request, f'{username}, you are logged in to your account.')
         return super().form_valid(form)
-
 
 
 class UserRegistrationView(FormView):
@@ -33,7 +36,7 @@ class UserRegistrationView(FormView):
         return super().form_valid(form)
 
 
-
+@method_decorator(login_required, name='dispatch')
 class UserProfileView(FormView, LoginRequiredMixin):
     template_name = 'users/profile.html'
     form_class = UserProfileForm
@@ -47,6 +50,16 @@ class UserProfileView(FormView, LoginRequiredMixin):
         kwargs = super().get_form_kwargs()
         kwargs['instance'] = self.request.user
         return kwargs
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['orders'] = Order.objects.filter(user=self.request.user).prefetch_related(
+            Prefetch(
+                "orderitem_set",
+                queryset=OrderItem.objects.select_related("product"),
+            )
+        ).order_by("-id")
+        return context
 
 
 def user_cart(request):
