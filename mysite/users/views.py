@@ -1,9 +1,10 @@
-from django.contrib import messages
-from django.contrib.auth import logout, get_user_model
+from django.contrib import messages, auth
+from django.contrib.auth import logout, get_user_model, authenticate, login as auth_login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView
 from django.db.models import Prefetch
+from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy, reverse
 from django.utils.decorators import method_decorator
@@ -14,14 +15,36 @@ from cart.models import Cart
 from order.models import Order, OrderItem
 
 
-class UserLoginView(LoginView):
-    template_name = 'users/login.html'
-    form_class = UserLoginForm
+def login(request):
+    if request.method == 'POST':
+        form = UserLoginForm(data=request.POST)
+        if form.is_valid():
+            username = request.POST['username']
+            password = request.POST['password']
+            user = auth.authenticate(username=username, password=password)
 
-    def form_valid(self, form):
-        username = form.cleaned_data.get('username')
-        messages.success(self.request, f'{username}, you are logged in to your account.')
-        return super().form_valid(form)
+            session_key = request.session.session_key
+
+            if user:
+                auth.login(request, user)
+                messages.success(request, f"{username}, Вы вошли в аккаунт")
+
+                if session_key:
+                    Cart.objects.filter(session_key=session_key).update(user=user)
+
+                redirect_page = request.POST.get('next', None)
+                if redirect_page and redirect_page != reverse('user:logout'):
+                    return HttpResponseRedirect(request.POST.get('next'))
+
+                return HttpResponseRedirect(reverse('main:index'))
+    else:
+        form = UserLoginForm()
+
+    context = {
+        'title': 'Home - Авторизация',
+        'form': form
+    }
+    return render(request, 'users/login.html', context)
 
 
 class UserRegistrationView(FormView):

@@ -1,6 +1,6 @@
 from django.contrib.auth.views import LogoutView
 from django.urls import path
-from .views import (UserLoginView,
+from .views import (login,
                     UserRegistrationView,
                     UserProfileView,
                     user_logout,
@@ -11,7 +11,7 @@ app_name = 'users'
 
 
 urlpatterns = [
-    path('login/', UserLoginView.as_view(), name='login'),
+    path('login/', login, name='login'),
     path('registration/', UserRegistrationView.as_view(), name='registration'),
     path('profile/', UserProfileView.as_view(), name='profile'),
     path('user-cart/', user_cart, name='user-cart'),
