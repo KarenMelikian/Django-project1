@@ -2,7 +2,7 @@ from django.contrib import messages, auth
 from django.contrib.auth import logout, get_user_model, authenticate, login as auth_login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LoginView, PasswordChangeView, PasswordChangeDoneView
 from django.db.models import Prefetch
 from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render
@@ -103,3 +103,13 @@ def user_logout(request):
     logout(request)
     messages.success(request, f'{request.user.username} You are logged out of your account.')
     return redirect(reverse('main:index'))
+
+
+
+class UserPasswordChangeView(PasswordChangeView):
+    template_name = 'users/password-change.html'
+    success_url = reverse_lazy('users:profile')
+
+    def form_valid(self, form):
+        messages.success(self.request, f'{self.request.user.username} Your password has been changed successfully.')
+        return super().form_valid(form)

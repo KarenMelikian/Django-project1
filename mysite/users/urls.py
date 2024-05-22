@@ -4,7 +4,9 @@ from .views import (login,
                     registration,
                     UserProfileView,
                     user_logout,
-                    user_cart
+                    user_cart,
+                    UserPasswordChangeView,
+                    # UserPasswordChangeDoneView
                     )
 
 app_name = 'users'
@@ -15,5 +17,6 @@ urlpatterns = [
     path('registration/', registration, name='registration'),
     path('profile/', UserProfileView.as_view(), name='profile'),
     path('user-cart/', user_cart, name='user-cart'),
-    path('logout/', user_logout, name='logout')
+    path('logout/', user_logout, name='logout'),
+    path('password-change/', UserPasswordChangeView.as_view(), name='password_change'),
 ]
