@@ -27,7 +27,7 @@ def login(request):
 
             if user:
                 auth.login(request, user)
-                messages.success(request, f"{username}, Вы вошли в аккаунт")
+                messages.success(request, f"{username}, You are logged in")
 
                 if session_key:
                     Cart.objects.filter(session_key=session_key).update(user=user)
@@ -41,22 +41,33 @@ def login(request):
         form = UserLoginForm()
 
     context = {
-        'title': 'Home - Авторизация',
         'form': form
     }
     return render(request, 'users/login.html', context)
 
 
-class UserRegistrationView(FormView):
-    template_name = 'users/registration.html'
-    form_class = UserRegistrationForm
-    success_url = reverse_lazy('users:login')
+def registration(request):
+    if request.method == 'POST':
+        form = UserRegistrationForm(data=request.POST)
+        if form.is_valid():
+            form.save()
 
-    def form_valid(self, form):
-        form.save()
-        username = form.cleaned_data.get('username')
-        messages.success(self.request, f'{username}, you are successfully registered.')
-        return super().form_valid(form)
+            session_key = request.session.session_key
+
+            user = form.instance
+            auth.login(request, user)
+
+            if session_key:
+                Cart.objects.filter(session_key=session_key).update(user=user)
+            messages.success(request, f"{user.username}, You have successfully registered and logged into your account")
+            return HttpResponseRedirect(reverse('main:index'))
+    else:
+        form = UserRegistrationForm()
+
+    context = {
+        'form': form
+    }
+    return render(request, 'users/registration.html', context)
 
 
 @method_decorator(login_required, name='dispatch')

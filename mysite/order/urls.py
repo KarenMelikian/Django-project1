@@ -5,5 +5,5 @@ app_name = 'order'
 
 
 urlpatterns = [
-    path('create-order', create_order, name='create_order')
+    path('create-order/', create_order, name='create_order')
 ]
