@@ -154,3 +154,16 @@ AUTH_USER_MODEL = 'users.User'
 LOGIN_REDIRECT_URL = '/user/profile/'
 LOGOUT_REDIRECT_URL = '/user/login/'
 LOGIN_URL = '/user/login/'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = '587'
+EMAIL_HOST_USER = 'melikyankar05@gmail.com'
+EMAIL_HOST_PASSWORD = 'xdcvlnxoshkfzlwi'
+EMAIL_USE_TLS = True
+
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+SERVER_EMAIL = EMAIL_HOST_USER
+EMAIL_ADMIN = EMAIL_HOST_USER
+
+# 465 (for SSL), or port 587 (for TLS)

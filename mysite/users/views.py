@@ -2,7 +2,13 @@ from django.contrib import messages, auth
 from django.contrib.auth import logout, get_user_model, authenticate, login as auth_login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.views import LoginView, PasswordChangeView, PasswordChangeDoneView
+from django.contrib.auth.views import (
+    LoginView,
+    PasswordChangeView,
+    PasswordResetView,
+    PasswordResetDoneView,
+    PasswordResetConfirmView
+)
 from django.db.models import Prefetch
 from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render
@@ -113,3 +119,19 @@ class UserPasswordChangeView(PasswordChangeView):
     def form_valid(self, form):
         messages.success(self.request, f'{self.request.user.username} Your password has been changed successfully.')
         return super().form_valid(form)
+
+
+
+class UserPasswordResetView(PasswordResetView):
+    template_name = 'users/password-reset.html'
+    success_url = reverse_lazy('users:password_reset_done')
+
+
+class UserPasswordResetDoneView(PasswordResetDoneView):
+    template_name = 'users/password-reset-done.html'
+
+
+
+class UserPasswordResetConfirmView(PasswordResetConfirmView):
+    template_name = 'users/password-reset-confirm.html'
+    success_url = reverse_lazy('users:login')

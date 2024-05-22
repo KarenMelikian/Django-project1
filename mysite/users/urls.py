@@ -6,7 +6,9 @@ from .views import (login,
                     user_logout,
                     user_cart,
                     UserPasswordChangeView,
-                    # UserPasswordChangeDoneView
+                    UserPasswordResetView,
+                    UserPasswordResetDoneView,
+                    UserPasswordResetConfirmView
                     )
 
 app_name = 'users'
@@ -19,4 +21,7 @@ urlpatterns = [
     path('user-cart/', user_cart, name='user-cart'),
     path('logout/', user_logout, name='logout'),
     path('password-change/', UserPasswordChangeView.as_view(), name='password_change'),
+    path('reset-password/', UserPasswordResetView.as_view(), name='password_reset'),
+    path('reset-password-done/', UserPasswordResetDoneView.as_view(), name='password_reset_done'),
+    path('reset-password/confirm/<uidb64>/<token>/', UserPasswordResetConfirmView.as_view(), name='password_reset_confirm'),
 ]
