@@ -13,6 +13,19 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 from pathlib import Path
 import os
 
+import sentry_sdk
+
+sentry_sdk.init(
+    dsn="https://cc4007d9a090388f23d265592e177795@o4507265139867648.ingest.de.sentry.io/4507300766744656",
+    # Set traces_sample_rate to 1.0 to capture 100%
+    # of transactions for performance monitoring.
+    traces_sample_rate=1.0,
+    # Set profiles_sample_rate to 1.0 to profile 100%
+    # of sampled transactions.
+    # We recommend adjusting this value in production.
+    profiles_sample_rate=1.0,
+)
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -26,7 +39,6 @@ SECRET_KEY = 'django-insecure-s7cqwzfe5^d=zu-%2jomb(+&8=k#*(ndumu^2ee*^85@_72v%z
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -84,14 +96,26 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'RegalRidge',
+#         'USER': 'RegalRidge',
+#         'PASSWORD': 'KarGamer123',
+#         'HOST': 'postgres',
+#         'PORT': '5432',
+#     }
+# }
+
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'RegalRidge',
-        'USER': 'postgres',
+        'USER': 'RegalRidge',
         'PASSWORD': 'KarGamer123',
         'HOST': '127.0.0.1',
-        'PORT': '5432'
+        'PORT': '5432',
     }
 }
 
@@ -140,9 +164,18 @@ MEDIA_URL = 'media/'
 
 MEDIA_ROOT = BASE_DIR / 'media'
 
+
+ALLOWED_HOSTS = [
+    "0.0.0.0",
+    "127.0.0.1",
+]
+
+
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
+
+
 
 
 # Default primary key field type

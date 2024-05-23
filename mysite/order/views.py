@@ -1,10 +1,14 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db import transaction
+from django.db.models import Prefetch
 from django.forms import ValidationError
 from django.shortcuts import redirect, render
 
 from cart.models import Cart
+from django.utils.decorators import method_decorator
+from django.views.generic import ListView, FormView
 
 from .forms import CreateOrderForm
 from .models import Order, OrderItem
@@ -78,3 +82,20 @@ def create_order(request):
         'orders': True,
     }
     return render(request, 'order/create_order.html', context=context)
+
+
+
+@method_decorator(login_required, name='dispatch')
+class OrderListView(ListView, LoginRequiredMixin):
+    template_name = 'order/order-list.html'
+    model = Order
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['orders'] = Order.objects.filter(user=self.request.user).prefetch_related(
+            Prefetch(
+                "orderitem_set",
+                queryset=OrderItem.objects.select_related("product"),
+            )
+        ).order_by("-id")
+        return context

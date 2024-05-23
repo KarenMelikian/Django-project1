@@ -39,7 +39,7 @@
                                 Information
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item  text-white" href="#">Shipping and payment</a></li>
+                                <li><a class="dropdown-item  text-white" href="{% url 'order:order_list' %}">Shipping and payment</a></li>
                                 <li><a class="dropdown-item  text-white" href="#">Contact Information</a></li>
                                 <li><a class="dropdown-item  text-white" href="{% url 'main:about' %}">About Us </a></li>
                             </ul>
@@ -55,7 +55,6 @@
                                     My profile
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item  text-white" href="carts/cart.html">Basket</a></li>
                                     <li><a class="dropdown-item  text-white" href="{% url 'users:profile' %}">Personal area</a>
                                     </li>
                                     {% if request.user.is_admin or request.user.is_staff %}

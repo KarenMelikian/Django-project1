@@ -1,9 +1,7 @@
 {% load static %}
 {% load carts_tags %}
 
-
 {% user_carts request as carts %}
-
 
 <div class="card mb-3 text-bg-light shadow-lg">
     {% for cart in carts %}
@@ -11,7 +9,7 @@
         <h5 class="card-title">{{ cart.product.name }}</h5>
     </div>
         <ul class="list-group list-group-flush">
-            <li class="list-group-i tem">
+            <li class="list-group-item">
                 <div class="row text-center">
                     <div class="col p-0">
                         <div class="input-group">
@@ -42,17 +40,17 @@
                         data-cart-id="{{ cart.id }}">
                             {% csrf_token %}
                             <img class="mx-1" src="{% static 'deps/icons/trash3-fill.svg' %}"
-                                alt="Catalog Icon" width="16" height="16">
+                                alt="Remove Icon" width="16" height="16">
                         </a>
                     </div>
                 </div>
             </li>
         </ul>
-        {% endfor %}
+    {% endfor %}
 </div>
 <div class="card mb-3 shadow-lg">
     <div class="card-footer">
-        <p class="float-left">Итого <strong>{{ carts.total_quantity }}</strong> товар(а) на сумму</p>
+        <p class="float-left">Total <strong>{{ carts.total_quantity }}</strong> item(s) for a total of</p>
         <h4 class="float-left"><strong>{{ carts.total_price }} $</strong></h4>
     </div>
 </div>
